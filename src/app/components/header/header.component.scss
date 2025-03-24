@@ -1,0 +1,54 @@
+@use "../../../styles/mixins" as *;
+
+.header {
+  box-shadow: 0 0 8px #d8d8d8;
+  &__container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: start;
+    padding: 12px 8px;
+  }
+
+  &__figure {
+    width: 42px;
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__author {
+    font-size: 14px;
+    color: #777;
+  }
+
+  &__link {
+    &::before {
+      @include pseudo-line(12px, 0 4px 0 0);
+    }
+    &::after {
+      @include pseudo-line(36px, 0 0 0 4px);
+    }
+  }
+  @include responsive("sm") {
+    &__container {
+      flex-direction: column;
+      text-align: center;
+    }
+    &__link {
+      &::before {
+        @include pseudo-line(24px, 0 4px 0 0);
+      }
+      &::after {
+        @include pseudo-line(24px, 0 0 0 4px);
+      }
+    }
+  }
+}
