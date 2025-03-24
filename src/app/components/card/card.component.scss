@@ -11,15 +11,20 @@
     border: solid 1px #d2d2d2;
     max-width: 212px;
     position: relative;
+    transition: all 0.3s ease-in-out;
     width: 100%;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   .card {
-    &__button{
-      &--close{
+    &__button {
+      &--close {
         background-color: white;
         border-radius: 100%;
         border: none;
         border: solid 1px #d2d2d2;
+        cursor: pointer;
         height: 28px;
         outline: none;
         padding: 4px;
@@ -27,8 +32,22 @@
         right: 0;
         top: 0;
         transform: translate(35%, -35%);
+        transition: all 0.2s ease-in-out;
         width: 28px;
         z-index: 1;
+        & > img {
+          transition: inherit;
+        }
+        &:hover {
+          border-color: #000;
+          height: 36px;
+          width: 36px;
+          & > img {
+            transform: scale(1.1);
+            transform: rotate(-90deg);
+            filter: invert(17%) sepia(94%) saturate(7032%) hue-rotate(337deg) brightness(101%) contrast(107%);
+          }
+        }
       }
     }
     &__figure {
