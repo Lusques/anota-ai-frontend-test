@@ -1,0 +1,28 @@
+<div class="container">
+  <ul class="list">
+    @for (item of [1,2,3,4,5,6]; track $index) {
+    <li class="list__item">
+      <button class="card__button--close">
+        <img src="https://githubanotaai.github.io/frontend-interview-mock-data/assets/close.svg" alt="aaa">
+      </button>
+      <figure class="card__figure">
+        <span class="card__figure--tag">Paisagem</span>
+      </figure>
+      <div class="card__content">
+        <h3 class="card__title">Árvore</h3>
+        <p class="card__text">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </p>
+      </div>
+    </li>
+    }
+  </ul>
+</div>

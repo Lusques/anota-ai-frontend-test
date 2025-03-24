@@ -1,6 +1,7 @@
 @use "../../../styles/mixins" as *;
 
 .header {
+  background-color: white;
   box-shadow: 0 0 8px #d8d8d8;
   &__container {
     align-items: center;
