@@ -60,13 +60,12 @@
       width: 100%;
       border-radius: 8px 8px 0 0;
       &--tag {
-        background-color: #0158f5;
         border-radius: 4px;
         color: white;
         display: block;
         font-size: 12px;
         font-weight: bold;
-        padding: 4px;
+        padding: 0 4px;
         position: absolute;
         width: fit-content;
         right: 4px;
@@ -94,5 +93,20 @@
       padding: 0 12px;
       text-overflow: ellipsis;
     }
+  }
+}
+
+.deleting {
+  animation: deleting 0.3s forwards;
+}
+
+@keyframes deleting {
+  from {
+    top: 0px;
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    top: -16px;
   }
 }
