@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { TypeStyle, Card } from '../../models/card.model';
 
@@ -9,28 +9,21 @@ import { TypeStyle, Card } from '../../models/card.model';
   styleUrl: './card.component.scss',
 })
 export class CardComponent {
-  items: Card[] = [];
-
   constructor(private renderer: Renderer2, private dataService: DataService) {}
-
-  ngOnInit(): void {
-    this.dataService.getData().subscribe({
-      next: (response) => {
-        this.items = response;
-      },
-      error: (err) => {
-        console.error('API Error: ', err);
-      },
-    });
-  }
 
   removeCard(event: Event) {
     const button = event.target as HTMLElement;
-    const card = button.closest('.list__item');
+    const card = button.closest('li');
+    const appCard = button.closest('app-card');
 
     if (card) {
-      this.renderer.addClass(card, 'deleting');
-      setTimeout(() => this.renderer.removeChild(card.parentNode, card), 300);
+      this.renderer.addClass(card, 'card__animation--deleting');
+      setTimeout(() => {
+        this.renderer.removeChild(card.parentNode, card);
+        if (appCard) {
+          this.renderer.removeChild(appCard.parentNode, appCard);
+        }
+      }, 300);
     }
   }
 
@@ -54,4 +47,6 @@ export class CardComponent {
       this.typeStyles[type] || { label: 'Undefined', backgroundColor: '#555' }
     );
   }
+
+  @Input() card: Card | undefined;
 }

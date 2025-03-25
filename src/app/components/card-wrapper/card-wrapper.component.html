@@ -1,0 +1,7 @@
+<div class="container">
+  <ul class="card__wrapper">
+    @for (item of items; track $index) {
+    <app-card [card]="item" />
+    }
+  </ul>
+</div>

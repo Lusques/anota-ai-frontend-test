@@ -1,20 +1,28 @@
-<div class="container">
-  <ul class="list">
-    @for (item of items; track $index) {
-    <li class="list__item">
-      <button class="card__button--close" (click)="removeCard($event)">
-        <img src="https://githubanotaai.github.io/frontend-interview-mock-data/assets/close.svg" alt="button close">
-      </button>
-      <figure class="card__figure" [style]="{ 'background-image': 'url(' + item.img + ')' }">
-        <span class="card__figure--tag" [style]="{'background-color': getTypeLabel(item.type).backgroundColor}">{{getTypeLabel(item.type).label}}</span>
-      </figure>
-      <div class="card__content">
-        <h3 class="card__title">{{item.title}}</h3>
-        <p class="card__text">
-          {{item.description}}
-        </p>
-      </div>
-    </li>
-    }
-  </ul>
-</div>
+@if(card){
+<li class="card">
+  <button class="card__button--close" (click)="removeCard($event)">
+    <img
+      src="https://githubanotaai.github.io/frontend-interview-mock-data/assets/close.svg"
+      alt="button close"
+    />
+  </button>
+  <figure
+    class="card__figure"
+    [style]="{ 'background-image': 'url(' + card.img + ')' }"
+  >
+    <span
+      class="card__figure--tag"
+      [style]="{
+        'background-color': getTypeLabel(card.type).backgroundColor
+      }"
+      >{{ getTypeLabel(card.type).label }}</span
+    >
+  </figure>
+  <div class="card__content">
+    <h3 class="card__title">{{ card.title }}</h3>
+    <p class="card__text">
+      {{ card.description }}
+    </p>
+  </div>
+</li>
+}
