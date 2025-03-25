@@ -1,6 +1,10 @@
 <div class="container">
   <label class="searchbar__container">
-    <input class="searchbar__input" type="text" />
+    <input
+      class="searchbar__input"
+      type="text"
+      (input)="updateSearchQuery($event)"
+    />
     <button class="searchbar__button--search">
       <figure class="searchbar__figure">
         <img src="/images/search-icon.svg" alt="search icon" />

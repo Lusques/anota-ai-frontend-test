@@ -1,4 +1,11 @@
-import { Component, Input, Renderer2 } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  Renderer2,
+  SimpleChanges,
+} from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { TypeStyle, Card } from '../../models/card.model';
 
@@ -49,4 +56,25 @@ export class CardComponent {
   }
 
   @Input() card: Card | undefined;
+  @Input() searchQuery: string = '';
+  @Output() matchStatusChange = new EventEmitter<boolean>();
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['searchQuery'] || changes['card']) {
+      this.updateMatchStatus();
+    }
+  }
+
+  updateMatchStatus(): void {
+    this.matchStatusChange.emit(this.matchesQuery());
+  }
+
+  matchesQuery(): boolean {
+    const query = this.searchQuery?.trim().toLowerCase();
+    if (!query) return true;
+
+    return [this.card?.title, this.card?.description].some(
+      (field) => field && field?.toLowerCase().includes(query)
+    );
+  }
 }

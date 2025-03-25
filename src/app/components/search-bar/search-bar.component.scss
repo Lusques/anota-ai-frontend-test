@@ -17,8 +17,14 @@
     height: 100%;
     outline: none;
     padding: 0 12px;
-    transition: .3s;
+    transition: 0.3s;
     width: 100%;
+    &:hover {
+      border-color: #AED7F5;
+      & + button {
+        border-color: #AED7F5;
+      }
+    }
     &:focus {
       border-color: #399ce6;
       & + button {
@@ -33,7 +39,7 @@
     border-left: none;
     outline: none;
     padding: 8px;
-    transition: .3s;
+    transition: 0.3s;
   }
   &__figure {
     width: 24px;

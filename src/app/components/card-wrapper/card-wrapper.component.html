@@ -1,7 +1,13 @@
 <div class="container">
   <ul class="card__wrapper">
     @for (item of items; track $index) {
-    <app-card [card]="item" />
+      @if (cardStatuses[$index]) {
+      <app-card
+        [card]="item"
+        [searchQuery]="searchQuery"
+        (matchStatusChange)="showCard($event, $index)"
+      />
+      }
     }
   </ul>
 </div>

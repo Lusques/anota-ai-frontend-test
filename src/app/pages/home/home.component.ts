@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../../components/header/header.component";
-import { CardComponent } from "../../components/card/card.component";
-import { CardWrapperComponent } from "../../components/card-wrapper/card-wrapper.component";
-import { SearchBarComponent } from "../../components/search-bar/search-bar.component";
+import { HeaderComponent } from '../../components/header/header.component';
+import { CardWrapperComponent } from '../../components/card-wrapper/card-wrapper.component';
+import { SearchBarComponent } from '../../components/search-bar/search-bar.component'; // Importação correta
 
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent, CardComponent, CardWrapperComponent, SearchBarComponent],
+  standalone: true,
+  imports: [HeaderComponent, CardWrapperComponent, SearchBarComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  searchQuery: string = '';
 
+  onQueryReceived(query: string) {
+    this.searchQuery = query;
+  }
 }
