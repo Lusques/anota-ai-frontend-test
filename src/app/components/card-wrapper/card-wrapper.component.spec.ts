@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CardWrapperComponent } from './card-wrapper.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CardWrapperComponent', () => {
   let component: CardWrapperComponent;
@@ -8,13 +8,11 @@ describe('CardWrapperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardWrapperComponent]
-    })
-    .compileComponents();
+      imports: [HttpClientTestingModule, CardWrapperComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CardWrapperComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
