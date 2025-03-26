@@ -6,6 +6,7 @@
         [card]="item"
         [searchQuery]="searchQuery"
         (matchStatusChange)="showCard($event, $index)"
+        (cardDeleted)="removeCard($index)"
       />
       }
     }

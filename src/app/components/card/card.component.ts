@@ -16,23 +16,10 @@ import { TypeStyle, Card } from '../../models/card.model';
   styleUrl: './card.component.scss',
 })
 export class CardComponent {
-  constructor(private renderer: Renderer2, private dataService: DataService) {}
-
-  removeCard(event: Event) {
-    const button = event.target as HTMLElement;
-    const card = button.closest('li');
-    const appCard = button.closest('app-card');
-
-    if (card) {
-      this.renderer.addClass(card, 'card__animation--deleting');
-      setTimeout(() => {
-        this.renderer.removeChild(card.parentNode, card);
-        if (appCard) {
-          this.renderer.removeChild(appCard.parentNode, appCard);
-        }
-      }, 300);
-    }
-  }
+  @Input() card: Card | undefined;
+  @Input() searchQuery: string = '';
+  @Output() matchStatusChange = new EventEmitter<boolean>();
+  @Output() cardDeleted = new EventEmitter<void>();
 
   typeStyles: Record<string, TypeStyle> = {
     '1': {
@@ -49,15 +36,25 @@ export class CardComponent {
     },
   };
 
+  constructor(private renderer: Renderer2, private dataService: DataService) {}
+
+  removeCard(event: Event) {
+    event.stopPropagation();
+    const card = (event.target as HTMLElement).closest('li');
+    if (card) {
+      card.classList.toggle('card__animation--deleting');
+      setTimeout(() => {
+        this.cardDeleted.emit();
+        card.classList.toggle('card__animation--deleting');
+      }, 300);
+    }
+  }
+
   getTypeLabel(type: string): TypeStyle {
     return (
       this.typeStyles[type] || { label: 'Undefined', backgroundColor: '#555' }
     );
   }
-
-  @Input() card: Card | undefined;
-  @Input() searchQuery: string = '';
-  @Output() matchStatusChange = new EventEmitter<boolean>();
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['searchQuery'] || changes['card']) {

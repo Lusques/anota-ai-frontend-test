@@ -8,6 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SearchBarComponent {
   @Output() searchQuery = new EventEmitter<string>();
+
   updateSearchQuery(event: Event) {
     const input = event.target as HTMLInputElement;
     this.searchQuery.emit(input.value);

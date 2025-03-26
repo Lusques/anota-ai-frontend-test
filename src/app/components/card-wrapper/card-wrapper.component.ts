@@ -49,4 +49,11 @@ export class CardWrapperComponent implements OnInit {
       field?.toLowerCase().includes(query)
     );
   }
+
+  removeCard(index: number) {
+    if (index >= 0 && index < this.items.length) {
+      this.items.splice(index, 1);
+      this.cardStatuses.splice(index, 1);
+    }
+  }
 }
