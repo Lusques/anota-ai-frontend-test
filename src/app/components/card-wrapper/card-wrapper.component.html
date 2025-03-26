@@ -1,0 +1,14 @@
+<div class="container">
+  <ul class="card__wrapper">
+    @for (item of items; track $index) {
+      @if (cardStatuses[$index]) {
+      <app-card
+        [card]="item"
+        [searchQuery]="searchQuery"
+        (matchStatusChange)="showCard($event, $index)"
+        (cardDeleted)="removeCard($index)"
+      />
+      }
+    }
+  </ul>
+</div>

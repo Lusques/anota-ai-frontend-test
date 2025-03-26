@@ -1,0 +1,24 @@
+$breakpoints: (
+  "xxl": 1500px,
+  "xl": 1200px,
+  "lg": 1024px,
+  "md": 768px,
+  "sm": 576px
+);
+
+@mixin responsive($size) {
+  @media (max-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin pseudo-line($width: 16px, $margin: 0) {
+  background-color: #777;
+  content: "";
+  display: inline-block;
+  height: 1.5px;
+  margin: $margin;
+  position: relative;
+  top: -3px;
+  width: $width;
+}

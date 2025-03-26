@@ -1,0 +1,28 @@
+@if(card){
+<li class="card">
+  <button class="card__button--close" (click)="removeCard($event)">
+    <img
+      src="https://githubanotaai.github.io/frontend-interview-mock-data/assets/close.svg"
+      alt="button close"
+    />
+  </button>
+  <figure
+    class="card__figure"
+    [style]="{ 'background-image': 'url(' + card.img + ')' }"
+  >
+    <span
+      class="card__figure--tag"
+      [style]="{
+        'background-color': getTypeLabel(card.type).backgroundColor
+      }"
+      >{{ getTypeLabel(card.type).label }}</span
+    >
+  </figure>
+  <div class="card__content">
+    <h3 class="card__title">{{ card.title }}</h3>
+    <p class="card__text">
+      {{ card.description }}
+    </p>
+  </div>
+</li>
+}
