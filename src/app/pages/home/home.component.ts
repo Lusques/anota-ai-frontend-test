@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CardWrapperComponent } from '../../components/card-wrapper/card-wrapper.component';
-import { SearchBarComponent } from '../../components/search-bar/search-bar.component'; // Importação correta
+import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 
 @Component({
   selector: 'app-home',
